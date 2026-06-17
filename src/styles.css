@@ -516,6 +516,64 @@ select:focus {
   color: #6b7280 !important;
 }
 
+.economic-guided-block {
+  gap: 18px !important;
+}
+
+.economic-guided-help {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.economic-guided-help article,
+.economic-guided-note {
+  border: 1px solid var(--docroi-line) !important;
+  border-radius: 18px !important;
+  background: #f8fbfd !important;
+  padding: 16px !important;
+  box-shadow: none !important;
+}
+
+.economic-guided-help strong,
+.economic-guided-note strong {
+  display: block;
+  color: #003b5c;
+  margin-bottom: 6px;
+  font-weight: 950;
+}
+
+.economic-guided-help p,
+.economic-guided-note p {
+  margin: 0;
+  color: #253041;
+}
+
+.economic-guided-field {
+  align-content: start;
+  border: 1px solid #edf1f6;
+  border-radius: 18px;
+  background: #fff;
+  padding: 14px;
+}
+
+.economic-guided-field small {
+  min-height: 4.1em;
+}
+
+.economic-helper {
+  width: fit-content;
+  min-height: 38px !important;
+  margin-top: 2px;
+  padding: 8px 12px !important;
+  border-radius: 999px !important;
+  font-size: .84rem;
+}
+
+.economic-custom-input.is-hidden {
+  display: none !important;
+}
+
 .report-sheet {
   display: none;
   width: min(1120px, calc(100% - 48px));
@@ -584,12 +642,14 @@ select:focus {
   .kai-axis-grid,
   .kai-radar-layout,
   .friendly-audience-months,
-  .capex-summary { grid-template-columns: 1fr !important; }
+  .capex-summary,
+  .economic-guided-help { grid-template-columns: 1fr !important; }
   .question-panel { min-height: auto !important; padding: 22px !important; }
   .step-controls { position: static !important; display: grid !important; grid-template-columns: 1fr; }
   .step-controls .ghost-action,
   .step-controls .primary-action,
-  .capex-skip-note .primary-action { width: 100%; }
+  .capex-skip-note .primary-action,
+  .economic-helper { width: 100%; }
 }
 
 @media print {
