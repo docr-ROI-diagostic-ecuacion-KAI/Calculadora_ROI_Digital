@@ -1,3 +1,11 @@
+function docroiFinalSetPath(path, value) {
+  const keys = path.split(".");
+  const last = keys.pop();
+  const target = keys.reduce((obj, key) => { if (!obj[key]) obj[key] = {}; return obj[key]; }, state);
+  target[last] = value;
+  saveState();
+}
+
 function docroiAnalysisHorizonSelect(value) {
   const options = ["", "3", "6", "12", "18", "24", "36", "custom"];
   const current = displayValue(value || readPath("economic.periodMonths") || "12");
@@ -13,7 +21,7 @@ function docroiAnalysisHorizonSelect(value) {
     "36": "36 meses",
     custom: "Otro numero de meses"
   };
-  return `<div class="field"><label for="meta-analysisHorizon">Horizonte de analisis</label><select id="meta-analysisHorizon" data-analysis-horizon>${options.map((option) => `<option value="${option}" ${preset === option ? "selected" : ""}>${labels[option]}</option>`).join("")}</select><input class="economic-custom-input ${preset === "custom" ? "" : "is-hidden"}" data-analysis-horizon-custom type="number" value="${customValue}" placeholder="Ejemplo: 9"><small>Periodo aproximado del caso. Usa 12 meses si evaluas un ano; 3 o 6 si es una campana corta; 24 o 36 si es una inversion larga.</small></div>`;
+  return `<div class="field full analysis-horizon-field"><label for="meta-analysisHorizon">Horizonte de analisis</label><select id="meta-analysisHorizon" data-analysis-horizon>${options.map((option) => `<option value="${option}" ${preset === option ? "selected" : ""}>${labels[option]}</option>`).join("")}</select><input class="economic-custom-input ${preset === "custom" ? "" : "is-hidden"}" data-analysis-horizon-custom type="number" value="${customValue}" placeholder="Ejemplo: 9"><small>Periodo aproximado del caso. Usa 12 meses si evaluas un ano; 3 o 6 si es una campana corta; 24 o 36 si es una inversion larga.</small></div>`;
 }
 
 renderContext = function renderContextFinalScope() {
@@ -21,7 +29,7 @@ renderContext = function renderContextFinalScope() {
   if (!state.economic) state.economic = {};
   state.meta.email = "";
   state.meta.rgpdConsent = false;
-  return `<div class="field-grid">${input("meta.project", "Empresa", "Nombre de la empresa o unidad evaluada.", "text")}${input("meta.country", "Pais o territorio", "Mercado principal del diagnostico.", "text")}${input("meta.sector", "Sector", "Actividad principal de la organizacion.", "text")}${input("meta.companySize", "Tamano de empresa", "Pyme, mid-market, enterprise u otra referencia ejecutiva.", "text")}${docroiMaturitySelect(readPath("meta.digitalMaturity"))}${input("meta.wacc", "WACC o referencia financiera (%)", "Escribe 10 para 10%.")}${docroiAnalysisHorizonSelect(readPath("economic.periodMonths"))}<div class="field full"><label for="notes">Narrativa del caso</label><textarea id="notes" data-path="notes" rows="4" placeholder="">${displayValue(state.notes)}</textarea><small>Explica que escenario se quiere evaluar y por que importa para negocio.</small></div></div>`;
+  return `<div class="field-grid">${input("meta.project", "Empresa", "Nombre de la empresa o unidad evaluada.", "text")}${input("meta.country", "Pais o territorio", "Mercado principal del diagnostico.", "text")}${input("meta.sector", "Sector", "Actividad principal de la organizacion.", "text")}${input("meta.companySize", "Tamano de empresa", "Pyme, mid-market, enterprise u otra referencia ejecutiva.", "text")}${docroiMaturitySelect(readPath("meta.digitalMaturity"))}${input("meta.wacc", "WACC o referencia financiera (%)", "Escribe 10 para 10%.")}<div class="field full"><label for="notes">Narrativa del caso</label><textarea id="notes" data-path="notes" rows="4" placeholder="">${displayValue(state.notes)}</textarea><small>Explica que escenario se quiere evaluar y por que importa para negocio.</small></div>${docroiAnalysisHorizonSelect(readPath("economic.periodMonths"))}</div>`;
 };
 
 renderEquity = function renderEquityWithoutEconomicBlock() {
@@ -97,10 +105,10 @@ bindInputs = function bindInputsFinalScope() {
       const custom = document.querySelector("[data-analysis-horizon-custom]");
       if (select.value === "custom") {
         if (custom) custom.classList.remove("is-hidden");
-        docroiSetEconomicPath("economic.periodMonths", custom?.value || "");
+        docroiFinalSetPath("economic.periodMonths", custom?.value || "");
       } else {
         if (custom) custom.classList.add("is-hidden");
-        docroiSetEconomicPath("economic.periodMonths", select.value || "12");
+        docroiFinalSetPath("economic.periodMonths", select.value || "12");
         renderLive();
         renderReport();
       }
@@ -108,7 +116,7 @@ bindInputs = function bindInputsFinalScope() {
   });
   document.querySelectorAll("[data-analysis-horizon-custom]").forEach((input) => {
     input.addEventListener("input", () => {
-      docroiSetEconomicPath("economic.periodMonths", input.value);
+      docroiFinalSetPath("economic.periodMonths", input.value);
       renderLive();
       renderReport();
     });
