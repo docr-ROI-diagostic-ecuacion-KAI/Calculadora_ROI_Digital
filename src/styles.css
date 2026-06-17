@@ -1,87 +1,464 @@
-:root { font-family: Inter, system-ui, sans-serif; color: #05070b; background: #f4f6f8; font-synthesis: none; text-rendering: optimizeLegibility; }
+:root {
+  --black: #05070b;
+  --docroi-black: #0b0f19;
+  --docroi-blue: #003b5c;
+  --docroi-accent: #1d8cff;
+  --docroi-soft-blue: #d8ecf8;
+  --docroi-bg: #f4f6f8;
+  --docroi-card: #ffffff;
+  --docroi-line: #dfe6ef;
+  --docroi-muted: #667085;
+  --docroi-shadow: 0 22px 70px rgba(11, 15, 25, .10);
+}
+
 * { box-sizing: border-box; }
-html, body { margin: 0; min-width: 320px; }
-button, input, textarea { font: inherit; }
-a { color: inherit; text-decoration: none; }
-p { color: #566273; line-height: 1.7; }
-.container { width: min(1180px, calc(100% - 44px)); margin: 0 auto; }
-.doc-header { background: #05070b; color: #fff; position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(255,255,255,.1); }
-.header-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.header-inner img { height: 38px; width: auto; object-fit: contain; }
-.header-inner nav { display: flex; gap: 18px; font-weight: 800; font-size: 13px; color: #d8ecf8; }
-.hero { min-height: 640px; background-size: cover; background-position: center; color: #fff; display: flex; align-items: center; padding: 88px 0 76px; }
-.hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 42px; align-items: end; }
-.eyebrow { display: inline-flex; align-items: center; width: fit-content; border: 1px solid #d8ecf8; border-radius: 999px; background: #eaf6fb; color: #003b5c; padding: 8px 12px; font-size: 11px; line-height: 1; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; }
-h1, h2, h3, h4 { margin: 0; font-weight: 900; line-height: .98; }
-h1 { margin-top: 18px; font-size: clamp(44px, 7vw, 82px); max-width: 900px; }
-h2 { font-size: clamp(32px, 4vw, 52px); }
-h3 { font-size: 28px; }
-.hero p { color: #eaf6fb; max-width: 720px; font-size: 18px; }
-.hero-actions, .wizard-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-.primary-btn, .secondary-btn, .ghost-btn { border: 0; min-height: 54px; border-radius: 999px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 900; cursor: pointer; }
-.primary-btn { background: #fff; color: #05070b; }
-.primary-btn.small { background: #003b5c; color: #fff; }
-.secondary-btn { background: #eaf6fb; color: #003b5c; border: 1px solid #d8ecf8; }
-.ghost-btn { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.28); }
-button:disabled { opacity: .45; cursor: not-allowed; }
-.objective-panel, .wizard-card, .summary-panel, .kpi, .faq details, .kai-question { background: #fff; border: 1px solid #e1e7ef; border-radius: 28px; box-shadow: 0 18px 50px rgba(11,15,25,.08); }
-.objective-panel { padding: 30px; background: linear-gradient(160deg, rgba(11,15,25,.92), rgba(5,7,11,.98)); border-color: rgba(216,236,248,.16); }
-.objective-panel p, .objective-panel dd { color: #d8ecf8; }
-.objective-panel h2, .objective-panel dt { color: #fff; }
-.objective-panel dl { display: grid; gap: 14px; margin: 24px 0 0; }
-.objective-panel div { display: grid; grid-template-columns: 110px 1fr; gap: 10px; border-top: 1px solid rgba(255,255,255,.12); padding-top: 14px; }
-.objective-panel dd { margin: 0; }
-.route, .builder, .faq { padding: 82px 0; }
-.route h2, .builder-head h2, .faq h2 { margin: 14px 0; }
-.diiip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 28px 0 0; }
-.diiip div { background: #fff; border: 1px solid #e1e7ef; border-radius: 20px; padding: 18px; }
-.diiip span { color: #003b5c; font-weight: 900; text-transform: uppercase; font-size: 12px; }
-.diiip p { margin: 8px 0 0; font-size: 13px; }
-.builder-head { max-width: 850px; }
-.progress-wrap { margin: 28px 0; }
-.progress-meta { display: flex; justify-content: space-between; color: #566273; font-weight: 900; margin-bottom: 10px; }
-.progress-track { height: 12px; border-radius: 999px; background: #dde5ee; overflow: hidden; }
-.progress-track div { height: 100%; border-radius: inherit; background: #003b5c; transition: width .25s ease; }
-.builder-grid { display: grid; grid-template-columns: 190px minmax(0, 1fr) 310px; gap: 18px; align-items: start; }
-.step-list { position: sticky; top: 92px; display: grid; gap: 8px; }
-.step-list button { min-height: 44px; text-align: left; border: 1px solid #dde5ee; background: #fff; border-radius: 999px; padding: 0 12px; display: flex; align-items: center; gap: 8px; font-weight: 800; color: #566273; cursor: pointer; }
-.step-list button.active { background: #003b5c; border-color: #003b5c; color: #fff; }
-.step-list span { width: 24px; height: 24px; border-radius: 50%; background: rgba(216,236,248,.45); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
-.wizard-card, .summary-panel { padding: 24px; }
-.summary-panel { position: sticky; top: 92px; display: grid; gap: 12px; }
-.summary-panel h3 { font-size: 22px; }
-.form-section > p { margin-top: 10px; }
-.form-grid { display: grid; gap: 16px; margin-top: 18px; }
-.form-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.field { display: grid; gap: 8px; }
-.field span { font-weight: 900; color: #0b0f19; }
-.field input, .field textarea { border: 1px solid #dde5ee; border-radius: 18px; min-height: 52px; padding: 14px 16px; background: #f6f7f9; color: #05070b; width: 100%; }
-.field textarea { resize: vertical; }
-.field small { color: #5b6472; line-height: 1.5; }
-.teaching-feed { margin-top: 18px; background: #eaf6fb; border: 1px solid #d8ecf8; border-radius: 20px; padding: 18px; }
-.teaching-feed span { color: #003b5c; font-weight: 900; text-transform: uppercase; font-size: 11px; }
-.teaching-feed h4 { margin-top: 8px; font-size: 20px; color: #003b5c; }
-.teaching-feed p { margin-bottom: 0; color: #003b5c; font-weight: 700; }
-.kai-grid { display: grid; gap: 12px; margin-top: 18px; }
-.kai-question { box-shadow: none; border-radius: 20px; padding: 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; }
-.kai-question strong { color: #0b0f19; }
-.kai-question span { color: #003b5c; font-weight: 900; margin-left: 6px; }
-.kai-question p { margin: 8px 0 0; font-size: 14px; }
-.scale { display: flex; gap: 6px; }
-.scale button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid #dde5ee; background: #fff; color: #003b5c; font-weight: 900; cursor: pointer; }
-.scale button.selected { background: #003b5c; color: #fff; border-color: #003b5c; }
-.result-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
-.kpi { padding: 18px; border-radius: 20px; box-shadow: none; }
-.kpi span { display: block; color: #003b5c; font-weight: 900; text-transform: uppercase; font-size: 12px; margin-bottom: 10px; }
-.kpi strong { display: block; font-size: clamp(30px, 4vw, 46px); letter-spacing: -.02em; }
-.kpi p { margin: 10px 0 0; font-size: 14px; }
-.summary-panel .kpi strong { font-size: 26px; }
-.faq details { padding: 18px 22px; margin-top: 12px; box-shadow: none; }
-.faq summary { font-weight: 900; cursor: pointer; }
-.footer { background: #fff; border-top: 1px solid #e1e7ef; padding: 32px 0; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.footer img { height: 44px; width: auto; object-fit: contain; }
-.footer p { max-width: 660px; margin: 0; font-size: 14px; }
-@media print { .doc-header, .hero, .route, .step-list, .wizard-actions, .faq, .footer { display: none !important; } .builder { padding: 0; } .builder-grid { display: block; } .summary-panel { position: static; margin-top: 18px; } .wizard-card, .summary-panel, .kpi { box-shadow: none; } }
-@media (max-width: 1040px) { .hero-grid, .builder-grid { grid-template-columns: 1fr; } .step-list, .summary-panel { position: static; } .step-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 720px) { .container { width: min(100% - 28px, 1180px); } .header-inner { min-height: 64px; } .header-inner nav { display: none; } .hero { min-height: 560px; padding: 58px 0 44px; } h1 { font-size: 42px; } h2 { font-size: 32px; } .objective-panel, .wizard-card, .summary-panel { border-radius: 22px; padding: 20px; } .hero-actions, .wizard-actions { flex-direction: column; } .primary-btn, .secondary-btn, .ghost-btn { width: 100%; } .diiip, .form-grid.two, .result-grid, .step-list { grid-template-columns: 1fr; } .route, .builder, .faq { padding: 56px 0; } .kai-question { grid-template-columns: 1fr; } .scale { flex-wrap: wrap; } .footer-inner { align-items: flex-start; flex-direction: column; } }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: radial-gradient(circle at 20% 0%, rgba(216,236,248,.72), transparent 28%), var(--docroi-bg) !important;
+  color: #111827;
+  font-family: Inter, Arial, Helvetica, sans-serif !important;
+}
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+p { color: #4b5563; line-height: 1.66; }
+
+.app-shell {
+  display: grid !important;
+  grid-template-columns: 292px minmax(0, 1fr) !important;
+  min-height: 100vh;
+  background: transparent !important;
+}
+
+.sidebar {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  padding: 28px 22px !important;
+  background: #000 !important;
+  border-right: 1px solid rgba(255,255,255,.10);
+  color: #fff !important;
+  overflow-y: auto;
+}
+
+.sidebar .brand-lockup {
+  display: grid !important;
+  gap: 16px !important;
+  align-items: start !important;
+}
+
+.sidebar .docroi-logo {
+  width: 172px !important;
+  border: 0 !important;
+  background: #000 !important;
+}
+
+.sidebar .eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 8px;
+  border: 1px solid rgba(216,236,248,.26);
+  border-radius: 999px;
+  background: rgba(216,236,248,.10);
+  color: #d8ecf8 !important;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.sidebar h1 {
+  margin: 0;
+  color: #fff !important;
+  font-size: 1.15rem !important;
+  line-height: 1.18;
+  font-weight: 900 !important;
+}
+
+.step-nav {
+  display: grid;
+  gap: 9px !important;
+  margin-top: 8px;
+}
+
+.step-nav button {
+  min-height: 48px;
+  border: 1px solid rgba(216,236,248,.14) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #e5e7eb !important;
+  padding: 8px 12px !important;
+  font-weight: 850;
+}
+
+.step-nav button.active {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #05070b !important;
+}
+
+.step-number {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  border: 1px solid currentColor !important;
+  font-size: 12px;
+}
+
+.side-note {
+  margin-top: 24px !important;
+  border: 1px solid rgba(216,236,248,.18) !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.05) !important;
+  color: #cbd5e1 !important;
+}
+
+main {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.hero {
+  min-height: 430px;
+  padding: 70px clamp(24px, 5vw, 72px) 58px !important;
+  border: 0 !important;
+  color: #fff !important;
+  background-image: linear-gradient(90deg, rgba(5,7,11,.96), rgba(0,59,92,.82)), url("https://docroi.marketing/wp-content/uploads/2026/05/Imagen2.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  display: grid !important;
+  align-items: end !important;
+}
+
+.hero > div:first-child {
+  max-width: 980px;
+}
+
+.hero .eyebrow,
+.panel-heading .eyebrow,
+.executive-kai-intro .eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid rgba(216,236,248,.55);
+  border-radius: 999px;
+  background: rgba(216,236,248,.16);
+  color: #d8ecf8 !important;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.hero h2 {
+  max-width: 950px;
+  margin: 18px 0 16px;
+  color: #fff !important;
+  font-size: clamp(42px, 6vw, 78px) !important;
+  line-height: .96 !important;
+  letter-spacing: 0 !important;
+}
+
+.hero p:not(.eyebrow) {
+  max-width: 780px;
+  margin: 0;
+  color: #eaf6fb !important;
+  font-size: 18px;
+}
+
+.workspace {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 370px !important;
+  gap: 22px !important;
+  width: min(1240px, calc(100% - 48px));
+  margin: -38px auto 0 !important;
+  align-items: start;
+}
+
+.question-panel,
+.live-panel,
+.report-sheet,
+.exec-question,
+.kai-economics,
+.kai-metric-card,
+.financial-card,
+.financial-chart,
+.kai-radar-section,
+.kai-axis-card,
+.kai-mini-grid article,
+.learning-card,
+.plain-note,
+.audience-card,
+.faq details {
+  border: 1px solid var(--docroi-line) !important;
+  border-radius: 24px !important;
+  background: #fff !important;
+  box-shadow: var(--docroi-shadow) !important;
+}
+
+.question-panel {
+  padding: clamp(24px, 4vw, 40px) !important;
+  min-height: calc(100vh - 120px) !important;
+}
+
+.panel-topline {
+  color: var(--docroi-muted) !important;
+  font-weight: 850;
+}
+
+.step-title {
+  color: #0b0f19;
+  font-size: clamp(30px, 4vw, 52px) !important;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.step-intro {
+  max-width: 820px;
+  color: #566273 !important;
+  font-size: 1.04rem;
+}
+
+.reflection,
+.learning-read,
+.executive-read {
+  border: 0 !important;
+  border-radius: 22px !important;
+  background: #0b0f19 !important;
+  color: #fff !important;
+}
+
+.reflection,
+.executive-read {
+  padding: 18px 20px !important;
+}
+
+.reflection strong,
+.executive-read strong,
+.learning-read strong { color: #fff !important; }
+.executive-read p,
+.learning-read p,
+.learning-read small { color: #e5e7eb !important; }
+
+.live-panel {
+  display: block !important;
+  position: sticky !important;
+  top: 22px !important;
+  padding: 22px !important;
+  background: rgba(255,255,255,.96) !important;
+}
+
+.panel-heading h3 {
+  color: #0b0f19;
+  font-size: 1.55rem !important;
+  line-height: 1.1;
+}
+
+.kpi-strip,
+.financial-grid,
+.kai-metric-grid {
+  display: grid;
+  gap: 14px !important;
+}
+
+.kpi-card,
+.learning-card {
+  border-radius: 18px !important;
+  box-shadow: none !important;
+}
+
+.kpi-card span,
+.learning-card span,
+.financial-card span,
+.kai-metric-card > span,
+.kai-data-grade span {
+  color: var(--docroi-blue) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  font-size: .76rem !important;
+}
+
+.kpi-card strong,
+.financial-card strong,
+.kai-metric-card > strong {
+  color: #05070b;
+  font-size: clamp(1.7rem, 3vw, 2.55rem) !important;
+  letter-spacing: 0 !important;
+}
+
+.field-grid,
+.audience-estimator {
+  gap: 18px !important;
+}
+
+.field label,
+.audience-card label {
+  color: #0b0f19 !important;
+  font-weight: 900 !important;
+}
+
+input,
+textarea,
+select {
+  min-height: 52px;
+  border: 1px solid #d8e0ea !important;
+  border-radius: 16px !important;
+  background: #f8fafc !important;
+  color: #0b0f19 !important;
+  padding: 13px 15px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid rgba(29,140,255,.14) !important;
+  border-color: var(--docroi-accent) !important;
+}
+
+.primary-action,
+.ghost-action,
+.docroi-print-action,
+.kai-intro a {
+  min-height: 48px !important;
+  border-radius: 999px !important;
+  padding: 10px 18px !important;
+  font-weight: 900 !important;
+}
+
+.primary-action,
+.docroi-print-action {
+  border: 1px solid var(--docroi-blue) !important;
+  background: var(--docroi-blue) !important;
+  color: #fff !important;
+}
+
+.ghost-action,
+.kai-intro a {
+  border: 1px solid #cbd5e1 !important;
+  background: #fff !important;
+  color: #0b0f19 !important;
+}
+
+.rating-row button {
+  min-height: 62px !important;
+  border-radius: 16px !important;
+  border-color: #d8e0ea !important;
+}
+
+.rating-row button.selected,
+.step-controls .primary-action {
+  background: #0b0f19 !important;
+  border-color: #0b0f19 !important;
+  color: #fff !important;
+}
+
+.rating-row button.selected span { color: #fff !important; }
+
+.step-controls {
+  background: linear-gradient(180deg, rgba(255,255,255,0), #fff 34%) !important;
+}
+
+.friendly-audience-months {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.calc-table th,
+.editable-table th {
+  background: #0b0f19 !important;
+  color: #fff !important;
+}
+
+.report-sheet {
+  display: none;
+  width: min(1120px, calc(100% - 48px));
+  margin: 34px auto 70px !important;
+  padding: clamp(24px, 4vw, 42px) !important;
+}
+
+.report-cover.docroi-black-cover,
+.docroi-report-footer,
+.docroi-diip,
+.kai-data-grade {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 24px !important;
+}
+
+.kai-data-grade {
+  display: grid;
+  min-height: 160px;
+  align-content: center;
+}
+
+.kai-data-grade span {
+  color: #fff !important;
+  font-size: .9rem !important;
+  letter-spacing: .04em;
+}
+
+.kai-data-grade strong {
+  color: #fff !important;
+  font-size: clamp(3.2rem, 8vw, 6.6rem) !important;
+  line-height: .9 !important;
+  letter-spacing: 0 !important;
+}
+
+.kai-data-grade p { color: #fff !important; font-weight: 750; }
+
+.kai-axis-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.kai-radar-layout {
+  grid-template-columns: minmax(260px, 390px) minmax(0, 1fr) !important;
+}
+
+.docroi-diip-item {
+  border-radius: 18px !important;
+}
+
+@media (max-width: 1180px) {
+  .app-shell { grid-template-columns: 1fr !important; }
+  .sidebar { position: static !important; height: auto !important; }
+  .workspace { grid-template-columns: 1fr !important; margin-top: 24px !important; }
+  .live-panel { position: static !important; }
+}
+
+@media (max-width: 780px) {
+  .hero { min-height: 520px; padding: 54px 20px 44px !important; }
+  .hero h2 { font-size: 42px !important; }
+  .workspace,
+  .report-sheet { width: min(100% - 28px, 1120px); }
+  .field-grid,
+  .financial-grid,
+  .kai-metric-grid,
+  .kai-mini-grid,
+  .kai-axis-grid,
+  .kai-radar-layout,
+  .friendly-audience-months { grid-template-columns: 1fr !important; }
+  .question-panel { min-height: auto !important; padding: 22px !important; }
+  .step-controls { position: static !important; display: grid !important; grid-template-columns: 1fr; }
+  .step-controls .ghost-action,
+  .step-controls .primary-action { width: 100%; }
+}
+
+@media print {
+  body { background: #fff !important; }
+  .sidebar,
+  .hero,
+  .workspace { display: none !important; }
+  .app-shell { display: block !important; }
+  main { padding: 0 !important; }
+  .report-sheet { display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; }
+  .report-cover.docroi-black-cover,
+  .docroi-report-footer,
+  .docroi-diip,
+  .kai-data-grade { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .financial-card,
+  .kai-metric-card,
+  .kai-axis-card,
+  .plain-note,
+  .report-section { break-inside: avoid; box-shadow: none !important; }
+}
