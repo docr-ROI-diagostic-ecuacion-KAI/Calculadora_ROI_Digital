@@ -422,6 +422,100 @@ select:focus {
   font-weight: 950;
 }
 
+.capex-skip-note {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.capex-skip-note .primary-action {
+  width: fit-content;
+}
+
+.capex-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 18px;
+}
+
+.capex-summary article {
+  border: 1px solid var(--docroi-line);
+  border-radius: 18px;
+  background: #fff;
+  padding: 18px;
+  box-shadow: 0 12px 28px rgba(11,15,25,.05);
+}
+
+.capex-summary span {
+  display: block;
+  color: #003b5c;
+  font-size: .78rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.capex-summary strong {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+}
+
+.capex-summary label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: #0b0f19;
+  font-weight: 950;
+}
+
+.capex-summary input {
+  width: 96px !important;
+  min-height: 44px !important;
+  border-radius: 12px !important;
+}
+
+.capex-structured-wrap {
+  border: 1px solid var(--docroi-line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.capex-structured-table {
+  min-width: 1380px !important;
+}
+
+.capex-structured-table th {
+  white-space: nowrap;
+  font-size: .75rem !important;
+}
+
+.capex-structured-table td {
+  min-width: 126px;
+}
+
+.capex-structured-table input {
+  min-width: 118px !important;
+  min-height: 40px !important;
+  border-radius: 12px !important;
+  padding: 8px 10px !important;
+  font-size: .9rem;
+}
+
+.capex-group-row th {
+  background: #d8ecf8 !important;
+  color: #003b5c !important;
+  text-align: left;
+  font-size: .82rem !important;
+  letter-spacing: .03em;
+}
+
+.capex-annual {
+  color: #6b7280 !important;
+}
+
 .report-sheet {
   display: none;
   width: min(1120px, calc(100% - 48px));
@@ -489,11 +583,13 @@ select:focus {
   .kai-mini-grid,
   .kai-axis-grid,
   .kai-radar-layout,
-  .friendly-audience-months { grid-template-columns: 1fr !important; }
+  .friendly-audience-months,
+  .capex-summary { grid-template-columns: 1fr !important; }
   .question-panel { min-height: auto !important; padding: 22px !important; }
   .step-controls { position: static !important; display: grid !important; grid-template-columns: 1fr; }
   .step-controls .ghost-action,
-  .step-controls .primary-action { width: 100%; }
+  .step-controls .primary-action,
+  .capex-skip-note .primary-action { width: 100%; }
 }
 
 @media print {
