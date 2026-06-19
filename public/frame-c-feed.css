@@ -4,6 +4,12 @@
   color: #ffffff !important;
 }
 
+.live-panel {
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 .frame-c-feed {
   display: grid !important;
   gap: 12px !important;
@@ -12,7 +18,7 @@
 .frame-c-card {
   display: grid;
   gap: 8px;
-  padding: 16px;
+  padding: 15px;
   border: 1px solid #dfe6ef;
   border-radius: 18px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
@@ -35,13 +41,21 @@
 .frame-c-card p {
   margin: 0;
   color: #1f2937;
-  font-size: .92rem;
-  line-height: 1.48;
+  font-size: .88rem;
+  line-height: 1.43;
 }
 
 .frame-c-card b {
   color: #0b0f19;
   font-weight: 950;
+}
+
+.frame-c-watch {
+  margin-top: 2px !important;
+  padding: 9px 10px;
+  border-left: 3px solid #1d8cff;
+  border-radius: 12px;
+  background: #eef7ff;
 }
 
 .frame-c-note {
@@ -71,8 +85,13 @@
 }
 
 @media (max-width: 1180px) {
+  .live-panel {
+    max-height: none;
+    overflow: visible;
+  }
+
   .frame-c-feed {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
